@@ -1,18 +1,24 @@
 plugins {
     id 'java'
     id 'checkstyle'
-    id 'com.github.spotbugs' version '5.0.6'
+    id 'com.github.spotbugs' version '4.5.1'
 }
 
 group 'org.jgreen44'
 version '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+apply plugin: 'jacoco'
+
+mainClassName = 'Main'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    spotbugs 'com.github.spotbugs:spotbugs:4.5.3'
+    implementation 'com.github.spotbugs:spotbugs:4.5.1'
+    implementation 'com.puppycrawl.tools:checkstyle:10.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
@@ -21,25 +27,38 @@ test {
     useJUnitPlatform()
 }
 
-spotbugs {
+
+///////////////////////////////////////////////////////////////////////
+// Configure Checkstyle
+/////////////////////////////////////////////////////////////////////
+apply plugin: 'checkstyle'
+checkstyle {
+    // Keep checkstyle a little quieter
     ignoreFailures = true
-    showStackTraces = true
-    showProgress = true
-    effort = 'default'
-    reportLevel = 'default'
-    visitors = ['FindSqlInjection', 'SwitchFallthrough']
-    omitVisitors = ['FindNonShortCircuit']
-    reportsDir = file("$buildDir/spotbugs")
-    maxHeapSize = '1g'
+    showViolations = false
+    toolVersion = '8.29'
 }
 
+tasks.withType(Checkstyle) {
+    reports {
+        html.enabled = true
+        xml.enabled = false
+    }
+}
 
+///////////////////////////////////////////////////////////////////////
+// Configure SpotBugs
+///////////////////////////////////////////////////////////////////////
+// To generate an HTML report instead of XML
 spotbugsMain {
     reports {
-        html {
-            required = true
-            outputLocation = file("$buildDir/reports/spotbugs/main/spotbugs.html")
-            stylesheet = 'fancy-hist.xsl'
-        }
+        xml.enabled = false
+        html.enabled = true
     }
+}
+spotbugs {
+    toolVersion = '4.0.0-beta4'
+    ignoreFailures = true
+    showProgress = true
+    effort = 'max'
 }
