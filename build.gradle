@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'checkstyle'
-    id 'com.github.spotbugs' version '4.5.1'
+    id 'com.github.spotbugs' version '4.6.0'
 }
 
 group 'org.jgreen44'
@@ -17,10 +17,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.spotbugs:spotbugs:4.5.1'
+    implementation 'com.github.spotbugs:spotbugs:4.6.0'
     implementation 'com.puppycrawl.tools:checkstyle:10.1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
 test {
@@ -57,7 +57,7 @@ spotbugsMain {
     }
 }
 spotbugs {
-    toolVersion = '4.0.0-beta4'
+    toolVersion = '4.6.0'
     ignoreFailures = true
     showProgress = true
     effort = 'max'
