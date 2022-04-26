@@ -45,38 +45,39 @@ public class Main {
     int count = 1;
     boolean smallEnemy = false;
     boolean mediumEnemy = false;
+    boolean encounteredBattle = false;
 
     Faker faker = new Faker();
-    String heroName = faker.name().firstName();
 
-    System.out.println("Building your random character...please wait.....");
+    System.out.println("Building your random character...please wait.....\n");
 
     // REQUIREMENT #1 - Builder Pattern
     // Create a random character class
-    var hero = new Hero.Builder(CharacterType.getRandomCharacterType(),
-        heroName) // character type and name
-        .getHeightFeet(faker.number().numberBetween(3, 8))
-        .getHeightInches(faker.number().numberBetween(0, 11))
-        .getHairType(HairType.getRandomHairType()) // hair type
-        .getHairColor(HairColor.getRadonHairColor())
-        .getArmor(Armor.getRandomArmor()) // armor
+    var hero = new Hero.Builder()
+        .characterType(CharacterType.getRandomCharacterType())// random character type
+        .name(faker.name().firstName())
+        .heightInFeet(faker.number().numberBetween(3, 8))
+        .heightInInches(faker.number().numberBetween(0, 11))
+        .hairType(HairType.getRandomHairType()) // hair type
+        .hairColor(HairColor.getRadonHairColor())
+        .armor(Armor.getRandomArmor()) // armor
 
         // REQUIREMENT #2 - Builder Pattern
         // Create a random character minimum three unique weapon items
-        .getWeapon(Weapon.getRandomWeapon())  // weapon 1
-        .getWeapon2(Weapon.getRandomWeapon())  // weapon 2
-        .getWeapon3(Weapon.getRandomWeapon())  // weapon 3
-        .getHealth(faker.number().numberBetween(1, 10000))  // health
-        .getMana(faker.number().numberBetween(1, 1000)) //  mana
-        .getStrength(faker.number().numberBetween(1, 500))  // strength
-        .getAgility(faker.number().numberBetween(100, 1000))  // agility
-        .getIntelligence(faker.number().numberBetween(100, 100)) // intelligence
-        .getLuck(faker.number().numberBetween(0, 300))// luck
-        .getLevel(faker.number().numberBetween(1, 100)) // level
+        .weapon(Weapon.getRandomWeapon())  // weapon 1
+        .weapon2nd(Weapon.getRandomWeapon())  // weapon 2
+        .weapon3rd(Weapon.getRandomWeapon())  // weapon 3
+        .health(faker.number().numberBetween(1, 10000))  // health
+        .mana(faker.number().numberBetween(1, 1000)) //  mana
+        .strength(faker.number().numberBetween(1, 500))  // strength
+        .agility(faker.number().numberBetween(100, 1000))  // agility
+        .intelligence(faker.number().numberBetween(100, 100)) // intelligence
+        .luck(faker.number().numberBetween(0, 300))// luck
+        .level(faker.number().numberBetween(1, 100)) // level
 
         // REQUIREMENT #3 - Builder Pattern
         // Create a random character with skills
-        .getExperience(faker.number().numberBetween(1, 100)) // experience
+        .experience(faker.number().numberBetween(1, 100)) // experience
         .build();
     System.out.println(hero.toString());
 
@@ -95,9 +96,10 @@ public class Main {
       System.out.println("\nRoom " + count);
 
       // REQUIREMENT #1 - Decorator Pattern
-      /*  Encounter small enemy every floor,
-          medium enemy every fifth floor,
-          and boss every 10th floor */
+      /*
+      Encounter small enemy every floor, medium enemy every fifth floor, and boss
+      every 10th floor
+      */
       String enemyType;
       if (count % 10 == 0) {
         enemyType = "Boss Enemy";
@@ -130,6 +132,7 @@ public class Main {
 
       // logic if you take a hit to health or not.
       if (souts.getRandomTrueFalse()) {
+        encounteredBattle = true;
         System.out.println("You took a hit!");
         hero.setHealth(smallEnemy ? hero.getHealth() - smallEnemyObj.getEnemyPower() :
             mediumEnemy ? hero.getHealth() - mediumEnemyObj.getEnemyPower() :
@@ -152,24 +155,30 @@ public class Main {
       count++;
     }
 
+    if (encounteredBattle) {
+      // REQUIREMENT #1 - Iterator Pattern
+      // Shop should sell 3 random objects.
+      System.out.println("After battle, you ");
+      demonstrateTreasureChestIteratorForType(COINS);
+      demonstrateTreasureChestIteratorForType(GEMS);
+      demonstrateTreasureChestIteratorForType(POTIONS);
+      demonstrateTreasureChestIteratorForType(RINGS);
+      demonstrateTreasureChestIteratorForType(RODS);
+      demonstrateTreasureChestIteratorForType(SCROLLS);
+      demonstrateTreasureChestIteratorForType(WANDS);
+      demonstrateTreasureChestIteratorForType(WEAPONS);
+
+      // REQUIREMENT #2 - Iterator Pattern
+      // After battle, have chance to buy items from treasure chest.
+
+      // REQUIREMENT #3 - Iterator Pattern
+      // Gain experience after battle to increase skill or magic power upgrade.
+
+    }
+
+
     System.out.println("You're dead. Game over. Go study SER 316.");
 
-    // REQUIREMENT #1 - Iterator Pattern
-    // Shop should sell 3 random objects.
-    demonstrateTreasureChestIteratorForType(COINS);
-    demonstrateTreasureChestIteratorForType(GEMS);
-    demonstrateTreasureChestIteratorForType(POTIONS);
-    demonstrateTreasureChestIteratorForType(RINGS);
-    demonstrateTreasureChestIteratorForType(RODS);
-    demonstrateTreasureChestIteratorForType(SCROLLS);
-    demonstrateTreasureChestIteratorForType(WANDS);
-    demonstrateTreasureChestIteratorForType(WEAPONS);
-
-    // REQUIREMENT #2 - Iterator Pattern
-    // After battle, have chance to buy items from treasure chest.
-
-    // REQUIREMENT #3 - Iterator Pattern
-    // Gain experience after battle to increase skill or magic power upgrade.
 
   }
 

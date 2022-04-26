@@ -155,8 +155,8 @@ public final class Hero {
    */
   public static class Builder {
 
-    private final CharacterType characterType;
-    private final String name;
+    private CharacterType characterType;
+    private String name;
     private HairType hairType;
     private HairColor hairColor;
     private Armor armor;
@@ -175,87 +175,95 @@ public final class Hero {
     private int experience;
 
 
-    public Builder(CharacterType characterType, String name) {
-      this.characterType = characterType;
-      this.name = name;
+    public Builder() {
     }
 
-    public Builder getHairType(HairType hairType) {
+    public Builder characterType(CharacterType characterType) {
+      this.characterType = characterType;
+      return this;
+    }
+
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    public Builder hairType(HairType hairType) {
       this.hairType = hairType;
       return this;
     }
 
-    public Builder getHairColor(HairColor hairColor) {
+    public Builder hairColor(HairColor hairColor) {
       this.hairColor = hairColor;
       return this;
     }
 
-    public Builder getHeightFeet(double heightFeet) {
+    public Builder heightInFeet(double heightFeet) {
       this.heightFeet = heightFeet;
       return this;
     }
 
-    public Builder getHeightInches(double heightInches) {
+    public Builder heightInInches(double heightInches) {
       this.heightInches = heightInches;
       return this;
     }
 
-    public Builder getArmor(Armor armor) {
+    public Builder armor(Armor armor) {
       this.armor = armor;
       return this;
     }
 
-    public Builder getWeapon(Weapon weapon) {
+    public Builder weapon(Weapon weapon) {
       this.weapon = weapon;
       return this;
     }
 
-    public Builder getWeapon2(Weapon weapon) {
+    public Builder weapon2nd(Weapon weapon) {
       this.weapon2 = weapon;
       return this;
     }
 
-    public Builder getWeapon3(Weapon weapon) {
+    public Builder weapon3rd(Weapon weapon) {
       this.weapon3 = weapon;
       return this;
     }
 
-    public Builder getHealth(int health) {
+    public Builder health(int health) {
       this.health = health;
       return this;
     }
 
-    public Builder getMana(int mana) {
+    public Builder mana(int mana) {
       this.mana = mana;
       return this;
     }
 
-    public Builder getStrength(int strength) {
+    public Builder strength(int strength) {
       this.strength = strength;
       return this;
     }
 
-    public Builder getAgility(int agility) {
+    public Builder agility(int agility) {
       this.agility = agility;
       return this;
     }
 
-    public Builder getIntelligence(int intelligence) {
+    public Builder intelligence(int intelligence) {
       this.intelligence = intelligence;
       return this;
     }
 
-    public Builder getLuck(int luck) {
+    public Builder luck(int luck) {
       this.luck = luck;
       return this;
     }
 
-    public Builder getLevel(int level) {
+    public Builder level(int level) {
       this.level = level;
       return this;
     }
 
-    public Builder getExperience(int experience) {
+    public Builder experience(int experience) {
       this.experience = experience;
       return this;
     }
