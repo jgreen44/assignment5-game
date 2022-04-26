@@ -32,13 +32,13 @@ public class Main {
     while (itemIterator.hasNext()) {
       System.out.println(itemIterator.next().toString());
     }
-  }
+    itemIterator.remove();
 
-  /**
-   * Program entry point.
-   *
-   * @param args command line args
-   */
+    while (itemIterator.hasNext()) {
+      System.out.println(itemIterator.next().toString());
+    }
+
+  }
 
   public static void main(String[] args) {
 
@@ -51,6 +51,15 @@ public class Main {
     String heroName = faker.name().firstName();
 
     System.out.println("Building your random character...please wait.....");
+
+    // REQUIREMENT #1 - Builder Pattern
+    // Create a random character class
+
+    // REQUIREMENT #2 - Builder Pattern
+    // Create a random character with skills
+
+    // REQUIREMENT #3 - Builder Pattern
+    // Create a random character minimum three unique weapon items
     var hero = new Hero.Builder(CharacterType.getRandomCharacterType(),
         heroName) // character type and name
         .getHeightFeet(faker.number().numberBetween(3, 8))
@@ -58,6 +67,7 @@ public class Main {
         .getHairType(HairType.getRandomHairType()) // hair type
         .getHairColor(HairColor.getRadonHairColor())
         .getArmor(Armor.getRandomArmor()) // armor
+        // TODO - can't seem to get the 2nd and 3rd weapons to hold unique items
         .getWeapon(Weapon.getRandomWeapon())  // weapon 1
         .getWeapon2(Weapon.getRandomWeapon())  // weapon 2
         .getWeapon3(Weapon.getRandomWeapon())  // weapon 3
@@ -77,10 +87,19 @@ public class Main {
     System.out.println("----------------------------------------------------");
     System.out.println("\n");
 
+    // Set initial health
+
+    double initialHealth = hero.getHealth();
+    double currentHealth = hero.getHealth();
+
     while (hero.getHealth() > 0) {
 
       System.out.println("\nRoom " + count);
 
+      // REQUIREMENT #1 - Decorator Pattern
+      /*  Encounter small enemy every floor,
+          medium enemy every fifth floor,
+          and boss every 10th floor */
       String enemyType;
       if (count % 10 == 0) {
         enemyType = "Boss Enemy";
@@ -119,13 +138,16 @@ public class Main {
                 hero.getHealth() - bossEnemyObj.getEnemyPower());
         hero.setHealth(hero.getHealth() - smallEnemyObj.getEnemyPower());
         System.out.println("Your new health points are: " + hero.getHealth());
+
+
+        currentHealth = hero.getHealth();
+        System.out.println(HealthBar.getHealthBar((int) initialHealth, (int) currentHealth));
+        System.out.println(HealthBar.getHealthBarPercentage(initialHealth, currentHealth));
+
       } else {
         System.out.println("You got away! Consider yourself lucky! Go buy a lottery ticket.");
       }
 
-
-      // get treasure
-      System.out.println("Because you won the battle, ");
       smallEnemy = false;
       mediumEnemy = false;
 
@@ -134,7 +156,8 @@ public class Main {
 
     System.out.println("You're dead. Game over. Go study SER 316.");
 
-
+    // REQUIREMENT #1 - Iterator Pattern
+    // Shop should sell 3 random objects.
     demonstrateTreasureChestIteratorForType(COINS);
     demonstrateTreasureChestIteratorForType(GEMS);
     demonstrateTreasureChestIteratorForType(POTIONS);
@@ -148,4 +171,17 @@ public class Main {
   }
 
 
+  private static class HealthBar {
+    private static final String HEALTH_BAR = "Health: ";
+    private static final String HEALTH_PERCENTAGE = "Health %: ";
+
+    public static String getHealthBarPercentage(double initialHealth, double currentHealth) {
+      return HEALTH_PERCENTAGE + String.format("%.2f", ((currentHealth) / initialHealth) * 100);
+    }
+
+    public static String getHealthBar(int initialHealth, int currentHealth) {
+      return HEALTH_BAR + currentHealth + "/" + initialHealth;
+    }
+  }
 }
+
