@@ -2,6 +2,7 @@ package treasure;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public class TreasureForHero {
 
-  private final List<Item> items;
+  private static List<Item> items = null;
 
   /**
    * Instantiates a new Treasure for hero.
@@ -59,12 +60,24 @@ public class TreasureForHero {
     );
   }
 
+  public static Item getRandomItem2() {
+    int index = new Random().nextInt(items.size());
+    items.remove(index);
+    return items.get(index);
+
+  }
+
   public Iterator<Item> iterator(TreasureItemTypes treasureItemTypes) {
     return new TreasureChestItemIterator(this, treasureItemTypes);
   }
 
-
   public List<Item> getItems() {
     return new ArrayList<>(items);
   }
+
+  public void removeItem(Item item) {
+    items.remove(item);
+  }
+
+
 }

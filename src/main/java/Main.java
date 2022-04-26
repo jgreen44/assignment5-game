@@ -32,7 +32,7 @@ public class Main {
     while (itemIterator.hasNext()) {
       System.out.println(itemIterator.next().toString());
     }
-    itemIterator.remove();
+//    itemIterator.remove();
 
     while (itemIterator.hasNext()) {
       System.out.println(itemIterator.next().toString());
@@ -166,7 +166,8 @@ public class Main {
         treasureItemsIterator(WEAPONS);
 
         var randomWeapon = Weapon.getRandomWeapon();
-        var randomTreasure = TreasureItemTypes.getRandomTreasure();
+        var randomTreasure = TreasureForHero.getRandomItem2();
+
 
         // REQUIREMENT #2 - Iterator Pattern
         // After battle, have chance to buy items from treasure chest.
