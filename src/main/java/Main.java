@@ -46,7 +46,6 @@ public class Main {
     boolean smallEnemy = false;
     boolean mediumEnemy = false;
 
-
     Faker faker = new Faker();
     String heroName = faker.name().firstName();
 
@@ -54,12 +53,6 @@ public class Main {
 
     // REQUIREMENT #1 - Builder Pattern
     // Create a random character class
-
-    // REQUIREMENT #2 - Builder Pattern
-    // Create a random character with skills
-
-    // REQUIREMENT #3 - Builder Pattern
-    // Create a random character minimum three unique weapon items
     var hero = new Hero.Builder(CharacterType.getRandomCharacterType(),
         heroName) // character type and name
         .getHeightFeet(faker.number().numberBetween(3, 8))
@@ -67,7 +60,9 @@ public class Main {
         .getHairType(HairType.getRandomHairType()) // hair type
         .getHairColor(HairColor.getRadonHairColor())
         .getArmor(Armor.getRandomArmor()) // armor
-        // TODO - can't seem to get the 2nd and 3rd weapons to hold unique items
+
+        // REQUIREMENT #2 - Builder Pattern
+        // Create a random character minimum three unique weapon items
         .getWeapon(Weapon.getRandomWeapon())  // weapon 1
         .getWeapon2(Weapon.getRandomWeapon())  // weapon 2
         .getWeapon3(Weapon.getRandomWeapon())  // weapon 3
@@ -78,6 +73,9 @@ public class Main {
         .getIntelligence(faker.number().numberBetween(100, 100)) // intelligence
         .getLuck(faker.number().numberBetween(0, 300))// luck
         .getLevel(faker.number().numberBetween(1, 100)) // level
+
+        // REQUIREMENT #3 - Builder Pattern
+        // Create a random character with skills
         .getExperience(faker.number().numberBetween(1, 100)) // experience
         .build();
     System.out.println(hero.toString());
@@ -90,7 +88,7 @@ public class Main {
     // Set initial health
 
     double initialHealth = hero.getHealth();
-    double currentHealth = hero.getHealth();
+    double currentHealth;
 
     while (hero.getHealth() > 0) {
 

@@ -1,5 +1,7 @@
 package hero;
 
+import java.util.Random;
+
 /**
  * The enum Weapon.
  */
@@ -59,6 +61,7 @@ public enum Weapon {
   LONGBOW("Longbow", 5100),
   NET("Net", 5200);
 
+  private static final Random random = new Random();
   private final String name;
   private final int damage;
 
@@ -68,7 +71,9 @@ public enum Weapon {
   }
 
   public static Weapon getRandomWeapon() {
-    return values()[(int) (Math.random() * values().length)];
+    final int randomIndex =
+        random.nextInt(values().length); // return a value of 0..values().legnth - 1);
+    return values()[randomIndex];
   }
 
   public String getName() {
