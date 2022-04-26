@@ -12,6 +12,8 @@ public final class Hero {
   private final HairColor hairColor;
   private final Armor armor;
   private final Weapon weapon;
+  private final Weapon weapon2;
+  private final Weapon weapon3;
   private final double heightFeet;
   private final double heightInches;
   private final int mana;
@@ -30,6 +32,8 @@ public final class Hero {
     this.hairColor = builder.hairColor;
     this.hairType = builder.hairType;
     this.weapon = builder.weapon;
+    this.weapon2 = builder.weapon2;
+    this.weapon3 = builder.weapon3;
     this.heightFeet = builder.heightFeet;
     this.heightInches = builder.heightInches;
     this.armor = builder.armor;
@@ -73,6 +77,14 @@ public final class Hero {
 
   public Weapon getWeapon() {
     return weapon;
+  }
+
+  public Weapon getWeapon2() {
+    return weapon2;
+  }
+
+  public Weapon getWeapon3() {
+    return weapon3;
   }
 
   public int getHealth() {
@@ -124,7 +136,9 @@ public final class Hero {
         .append("Hair Type: ").append(hairType).append("\n")
         .append("Hair Color: ").append(hairColor).append("\n")
         .append("Armor: ").append(armor).append("\n")
-        .append("Weapon: ").append(weapon).append("\n")
+        .append("Weapon 1: ").append(weapon).append("\n")
+        .append("Weapon 2: ").append(weapon).append("\n")
+        .append("Weapon 3: ").append(weapon).append("\n")
         .append("Health: ").append(health).append("\n")
         .append("Mana: ").append(mana).append("\n")
         .append("Strength: ").append(strength).append("\n")
@@ -147,6 +161,8 @@ public final class Hero {
     private HairColor hairColor;
     private Armor armor;
     private Weapon weapon;
+    private Weapon weapon2;
+    private Weapon weapon3;
     private double heightFeet;
     private double heightInches;
     private int health;
@@ -157,6 +173,7 @@ public final class Hero {
     private int intelligence;
     private int luck;
     private int experience;
+
 
     public Builder(CharacterType characterType, String name) {
       this.characterType = characterType;
@@ -190,6 +207,16 @@ public final class Hero {
 
     public Builder getWeapon(Weapon weapon) {
       this.weapon = weapon;
+      return this;
+    }
+
+    public Builder getWeapon2(Weapon weapon) {
+      this.weapon2 = weapon;
+      return this;
+    }
+
+    public Builder getWeapon3(Weapon weapon) {
+      this.weapon3 = weapon;
       return this;
     }
 

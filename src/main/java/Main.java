@@ -58,7 +58,9 @@ public class Main {
         .getHairType(HairType.getRandomHairType()) // hair type
         .getHairColor(HairColor.getRadonHairColor())
         .getArmor(Armor.getRandomArmor()) // armor
-        .getWeapon(Weapon.getRandomWeapon())  // weapon
+        .getWeapon(Weapon.getRandomWeapon())  // weapon 1
+        .getWeapon2(Weapon.getRandomWeapon())  // weapon 2
+        .getWeapon3(Weapon.getRandomWeapon())  // weapon 3
         .getHealth(faker.number().numberBetween(1, 10000))  // health
         .getMana(faker.number().numberBetween(1, 1000)) //  mana
         .getStrength(faker.number().numberBetween(1, 500))  // strength
@@ -131,8 +133,6 @@ public class Main {
     }
 
     System.out.println("You're dead. Game over. Go study SER 316.");
-
-
 
 
     demonstrateTreasureChestIteratorForType(COINS);
