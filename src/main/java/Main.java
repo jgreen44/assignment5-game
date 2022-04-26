@@ -59,7 +59,7 @@ public class Main {
         .heightInFeet(faker.number().numberBetween(3, 8))
         .heightInInches(faker.number().numberBetween(0, 11))
         .hairType(HairType.getRandomHairType()) // hair type
-        .hairColor(HairColor.getRadonHairColor())
+        .hairColor(HairColor.getRandomHairColor())
         .armor(Armor.getRandomArmor()) // armor
 
         // REQUIREMENT #2 - Builder Pattern
