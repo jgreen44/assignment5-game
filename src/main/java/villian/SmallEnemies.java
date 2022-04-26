@@ -1,6 +1,9 @@
 package villian;
 
 
+/**
+ * The type Small enemies.
+ */
 public class SmallEnemies implements Enemies {
 
   @Override

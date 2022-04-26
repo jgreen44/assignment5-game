@@ -1,6 +1,9 @@
 package treasure;
 
 
+/**
+ * The type Item.
+ */
 public class Item {
 
   private final String name;

@@ -1,5 +1,8 @@
 package hero;
 
+/**
+ * The enum Armor.
+ */
 public enum Armor {
 
   BRANDED_ARMOR("branded armor"),
@@ -27,6 +30,11 @@ public enum Armor {
     this.title = title;
   }
 
+  /**
+   * Gets random armor.
+   *
+   * @return the random armor
+   */
   public static Armor getRandomArmor() {
     return values()[(int) (Math.random() * values().length)];
   }

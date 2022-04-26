@@ -4,10 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * The type Treasure for hero.
+ */
 public class TreasureForHero {
 
   private final List<Item> items;
 
+  /**
+   * Instantiates a new Treasure for hero.
+   */
   public TreasureForHero() {
     items = List.of(
         new Item(TreasureItemTypes.COINS, "Blue coin"),

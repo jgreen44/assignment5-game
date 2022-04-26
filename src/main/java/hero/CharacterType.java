@@ -1,5 +1,8 @@
 package hero;
 
+/**
+ * The enum Character type.
+ */
 public enum CharacterType {
 
   BARBARIAN,
@@ -15,6 +18,11 @@ public enum CharacterType {
   WARLOCK,
   WIZARD;
 
+  /**
+   * Gets random character type.
+   *
+   * @return the random character type
+   */
   public static CharacterType getRandomCharacterType() {
     return values()[(int) (Math.random() * values().length)];
   }

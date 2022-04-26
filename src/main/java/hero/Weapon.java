@@ -1,5 +1,8 @@
 package hero;
 
+/**
+ * The enum Weapon.
+ */
 public enum Weapon {
 
   CLUB("Club", 5),

@@ -133,34 +133,7 @@ public class Main {
     System.out.println("You're dead. Game over. Go study SER 316.");
 
 
-//    // simple troll
-//    System.out.println("A simple looking troll approaches.");
-//    var troll = new SmallEnemies();
-//    troll.attack();
-//    troll.fleeBattle();
-//    System.out.println("Simple troll power: " + troll.getAttackPower());
-//
-//
-//    // change the behavior of the simple troll by adding a decorator
-//    System.out.println("A troll with huge club surprises you.");
-//    var clubbedTroll = new MediumEnemies(troll);
-//    clubbedTroll.attack();
-//    clubbedTroll.fleeBattle();
-//    System.out.println("Clubbed troll power: " + clubbedTroll.getAttackPower());
 
-
-//    var mage = new Hero.Builder(CharacterType.BARBARIAN, heroName).getHairColor(HairColor.BLACK)
-//        .getWeapon(Weapon.BATTLEAXE).build();
-//    System.out.println(mage.toString());
-//
-//    var warrior = new Hero.Builder(CharacterType.BARD, heroName).getHairColor(HairColor.BLOND)
-//        .getHairType(HairType.SHORT_AND_CURLY).getArmor(Armor.CHAIN_MAIL).getWeapon(Weapon.HAND_AXE)
-//        .build();
-//    System.out.println(warrior.toString());
-//
-//    var thief = new Hero.Builder(CharacterType.CLERIC, heroName).getHairType(HairType.CURLY)
-//        .getWeapon(Weapon.LONGSWORD).build();
-//    System.out.println(thief.toString());
 
     demonstrateTreasureChestIteratorForType(COINS);
     demonstrateTreasureChestIteratorForType(GEMS);

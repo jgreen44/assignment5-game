@@ -28,6 +28,11 @@ public enum HairType {
     this.title = title;
   }
 
+  /**
+   * Gets random hair type.
+   *
+   * @return the random hair type
+   */
   public static HairType getRandomHairType() {
     return values()[(int) (Math.random() * values().length)];
   }

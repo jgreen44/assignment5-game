@@ -2,12 +2,21 @@ package treasure;
 
 import java.util.List;
 
+/**
+ * The type Treasure chest item iterator.
+ */
 public class TreasureChestItemIterator implements Iterator<Item> {
   private final TreasureForHero treasureForHero;
   private final TreasureItemTypes type;
   private int index;
 
 
+  /**
+   * Instantiates a new Treasure chest item iterator.
+   *
+   * @param treasure the treasure
+   * @param type     the type
+   */
   public TreasureChestItemIterator(TreasureForHero treasure, TreasureItemTypes type) {
     this.treasureForHero = treasure;
     this.type = type;

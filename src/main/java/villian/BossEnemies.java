@@ -1,6 +1,9 @@
 package villian;
 
 
+/**
+ * The type Boss enemies.
+ */
 public class BossEnemies implements Enemies {
 
   private final Enemies decorated;

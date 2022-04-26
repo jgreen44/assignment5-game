@@ -1,6 +1,9 @@
 package villian;
 
 
+/**
+ * The type Medium enemies.
+ */
 public class MediumEnemies implements Enemies {
 
   private final Enemies decorated;

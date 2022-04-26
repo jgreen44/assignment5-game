@@ -1,6 +1,9 @@
 package hero;
 
 
+/**
+ * The type Hero.
+ */
 public final class Hero {
 
   private final CharacterType characterType;
@@ -76,8 +79,8 @@ public final class Hero {
     return health;
   }
 
-  public int setHealth(int health) {
-    return this.health = health;
+  public void setHealth(int health) {
+    this.health = health;
   }
 
   public int getMana() {
@@ -112,8 +115,8 @@ public final class Hero {
   @Override
   public String toString() {
 
-    var sb = new StringBuilder();
-    sb
+    var stringBuilder = new StringBuilder();
+    stringBuilder
         .append("Your random hero is a: ").append(characterType).append("\n")
         .append("Name: ").append(name).append("\n")
         .append("Height: ").append(heightFeet).append(" feet, ")
@@ -130,9 +133,12 @@ public final class Hero {
         .append("Luck: ").append(luck).append("\n")
         .append("Level: ").append(level).append("\n")
         .append("Experience: ").append(experience).append("\n");
-    return sb.toString();
+    return stringBuilder.toString();
   }
 
+  /**
+   * The type Builder.
+   */
   public static class Builder {
 
     private final CharacterType characterType;
