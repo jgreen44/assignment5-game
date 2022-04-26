@@ -53,15 +53,11 @@ public class TreasureChestItemIterator implements Iterator<Item> {
     return tempIndex;
   }
 
+  @Override
   public void remove() {
-    treasureForHero.getItems().remove(index);
+    if (index != -1) {
+      treasureForHero.getItems().remove(index);
+      index = -1;
+    }
   }
-
-//  @Override
-//  public void remove() {
-//    if (index != -1) {
-//      treasureForHero.getItems().remove(index);
-//      index = -1;
-//    }
-//  }
 }

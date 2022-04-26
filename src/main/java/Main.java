@@ -166,6 +166,7 @@ public class Main {
         treasureItemsIterator(WEAPONS);
 
         var randomWeapon = Weapon.getRandomWeapon();
+        var randomTreasure = TreasureItemTypes.getRandomTreasure();
 
         // REQUIREMENT #2 - Iterator Pattern
         // After battle, have chance to buy items from treasure chest.
