@@ -167,6 +167,11 @@ public class Main {
     demonstrateTreasureChestIteratorForType(WANDS);
     demonstrateTreasureChestIteratorForType(WEAPONS);
 
+    // REQUIREMENT #2 - Iterator Pattern
+    // After battle, have chance to buy items from treasure chest.
+
+    // REQUIREMENT #3 - Iterator Pattern
+    // Gain experience after battle to increase skill or magic power upgrade.
 
   }
 
