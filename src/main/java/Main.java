@@ -25,9 +25,9 @@ public class Main {
 
   private static final TreasureForHero TREASURE_CHEST = new TreasureForHero();
 
-  private static void demonstrateTreasureChestIteratorForType(TreasureItemTypes treasureItemTypes) {
+  private static void treasureItemsIterator(TreasureItemTypes treasureItemTypes) {
     System.out.println("-------------------------");
-    System.out.println("Item Iterator for TreasureItemTypes " + treasureItemTypes + ": ");
+    System.out.println("Treasure Items " + treasureItemTypes + ": ");
     var itemIterator = TREASURE_CHEST.iterator(treasureItemTypes);
     while (itemIterator.hasNext()) {
       System.out.println(itemIterator.next().toString());
@@ -152,27 +152,33 @@ public class Main {
       smallEnemy = false;
       mediumEnemy = false;
 
-      count++;
-    }
+      if (encounteredBattle) {
+        // REQUIREMENT #1 - Iterator Pattern
+        // Shop should sell 3 random objects.
+        System.out.println("After battle, you encounter a treasure chest that has multiple items:");
+        treasureItemsIterator(COINS);
+        treasureItemsIterator(GEMS);
+        treasureItemsIterator(POTIONS);
+        treasureItemsIterator(RINGS);
+        treasureItemsIterator(RODS);
+        treasureItemsIterator(SCROLLS);
+        treasureItemsIterator(WANDS);
+        treasureItemsIterator(WEAPONS);
 
-    if (encounteredBattle) {
-      // REQUIREMENT #1 - Iterator Pattern
-      // Shop should sell 3 random objects.
-      System.out.println("After battle, you ");
-      demonstrateTreasureChestIteratorForType(COINS);
-      demonstrateTreasureChestIteratorForType(GEMS);
-      demonstrateTreasureChestIteratorForType(POTIONS);
-      demonstrateTreasureChestIteratorForType(RINGS);
-      demonstrateTreasureChestIteratorForType(RODS);
-      demonstrateTreasureChestIteratorForType(SCROLLS);
-      demonstrateTreasureChestIteratorForType(WANDS);
-      demonstrateTreasureChestIteratorForType(WEAPONS);
+        var randomWeapon = Weapon.getRandomWeapon();
 
-      // REQUIREMENT #2 - Iterator Pattern
-      // After battle, have chance to buy items from treasure chest.
+        // REQUIREMENT #2 - Iterator Pattern
+        // After battle, have chance to buy items from treasure chest.
+        System.out.println("You picked " + randomWeapon);
+        hero.setWeaponPrimary(randomWeapon);
 
-      // REQUIREMENT #3 - Iterator Pattern
-      // Gain experience after battle to increase skill or magic power upgrade.
+
+        // REQUIREMENT #3 - Iterator Pattern
+        // Gain experience after battle to increase skill or magic power upgrade.
+
+        count++;
+      }
+
 
     }
 

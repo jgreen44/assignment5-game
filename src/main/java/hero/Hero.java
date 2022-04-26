@@ -11,9 +11,6 @@ public final class Hero {
   private final HairType hairType;
   private final HairColor hairColor;
   private final Armor armor;
-  private final Weapon weapon;
-  private final Weapon weapon2;
-  private final Weapon weapon3;
   private final double heightFeet;
   private final double heightInches;
   private final int mana;
@@ -23,6 +20,9 @@ public final class Hero {
   private final int luck;
   private final int level;
   private final int experience;
+  private Weapon weapon2nd;
+  private Weapon weapon3rd;
+  private Weapon weaponPrimary;
   private int health;
 
 
@@ -31,9 +31,9 @@ public final class Hero {
     this.name = builder.name;
     this.hairColor = builder.hairColor;
     this.hairType = builder.hairType;
-    this.weapon = builder.weapon;
-    this.weapon2 = builder.weapon2;
-    this.weapon3 = builder.weapon3;
+    this.weaponPrimary = builder.weaponPrimary;
+    this.weapon2nd = builder.weapon2nd;
+    this.weapon3rd = builder.weapon3rd;
     this.heightFeet = builder.heightFeet;
     this.heightInches = builder.heightInches;
     this.armor = builder.armor;
@@ -75,16 +75,28 @@ public final class Hero {
     return heightInches;
   }
 
-  public Weapon getWeapon() {
-    return weapon;
+  public Weapon getWeaponPrimary() {
+    return weaponPrimary;
   }
 
-  public Weapon getWeapon2() {
-    return weapon2;
+  public Weapon setWeaponPrimary(Weapon weaponPrimary) {
+    return this.weaponPrimary = weaponPrimary;
   }
 
-  public Weapon getWeapon3() {
-    return weapon3;
+  public Weapon getWeapon2nd() {
+    return weapon2nd;
+  }
+
+  public Weapon setWeapon2nd(Weapon weapon2nd) {
+    return this.weapon2nd = weapon2nd;
+  }
+
+  public Weapon getWeapon3rd() {
+    return weapon3rd;
+  }
+
+  public Weapon setWeapon3rd(Weapon weapon3rd) {
+    return this.weapon3rd = weapon3rd;
   }
 
   public int getHealth() {
@@ -136,9 +148,9 @@ public final class Hero {
         .append("Hair Type: ").append(hairType).append("\n")
         .append("Hair Color: ").append(hairColor).append("\n")
         .append("Armor: ").append(armor).append("\n")
-        .append("Weapon 1: ").append(weapon).append("\n")
-        .append("Weapon 2: ").append(weapon).append("\n")
-        .append("Weapon 3: ").append(weapon).append("\n")
+        .append("Weapon 1: ").append(weaponPrimary).append("\n")
+        .append("Weapon 2: ").append(weaponPrimary).append("\n")
+        .append("Weapon 3: ").append(weaponPrimary).append("\n")
         .append("Health: ").append(health).append("\n")
         .append("Mana: ").append(mana).append("\n")
         .append("Strength: ").append(strength).append("\n")
@@ -160,9 +172,9 @@ public final class Hero {
     private HairType hairType;
     private HairColor hairColor;
     private Armor armor;
-    private Weapon weapon;
-    private Weapon weapon2;
-    private Weapon weapon3;
+    private Weapon weaponPrimary;
+    private Weapon weapon2nd;
+    private Weapon weapon3rd;
     private double heightFeet;
     private double heightInches;
     private int health;
@@ -214,17 +226,17 @@ public final class Hero {
     }
 
     public Builder weapon(Weapon weapon) {
-      this.weapon = weapon;
+      this.weaponPrimary = weapon;
       return this;
     }
 
     public Builder weapon2nd(Weapon weapon) {
-      this.weapon2 = weapon;
+      this.weapon2nd = weapon;
       return this;
     }
 
     public Builder weapon3rd(Weapon weapon) {
-      this.weapon3 = weapon;
+      this.weapon3rd = weapon;
       return this;
     }
 
