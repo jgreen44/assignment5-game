@@ -44,23 +44,29 @@ and health. Finally, use the Decorator pattern to add additional funcationality 
 
 ## Requirement Fullfilled
 
-Requirement 1
-- [Builder Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/3fa7e15c91d2424fc08140913901f447cb22d4a3/src/main/java/Main.java#L58-L58):
-Create a random character class Requirement 2
-- [Builder Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/3fa7e15c91d2424fc08140913901f447cb22d4a3/src/main/java/Main.java#L69-L69):
-Create a random character minimum three unique weapon items Requirement 3
-- [Builder Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/3fa7e15c91d2424fc08140913901f447cb22d4a3/src/main/java/Main.java#L82-L82):
-Create a random character with skills
+- Requirement
+  1: [Builder Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/43ccf262c361e32c4cdf21cb17958694e390c112/src/main/java/Main.java#L58-L58):
+  Create a random character class
+- Requirement
+  2: [Builder Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/43ccf262c361e32c4cdf21cb17958694e390c112/src/main/java/Main.java#L69-L69):
+  Create a random character minimum three unique weapon items
+- Requirement
+  3: [Builder Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/43ccf262c361e32c4cdf21cb17958694e390c112/src/main/java/Main.java#L82-L82):
+  Create a random character with skills
 
-Requirement 1
-- [Decorator Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/3fa7e15c91d2424fc08140913901f447cb22d4a3/src/main/java/Main.java#L98-L98):
-Encounter small enemy every floor, medium enemy every fifth floor, and boss every 10th floor
-Requirement 2 - [Decorator Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/3fa7e15c91d2424fc08140913901f447cb22d4a3/src/main/java/Main.java#L117-L117): All enemies should get harder for each floor you travel to
+- Requirement
+  1: [Decorator Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/43ccf262c361e32c4cdf21cb17958694e390c112/src/main/java/Main.java#L98-L98):
+  Encounter small enemy every floor, medium enemy every fifth floor, and boss every 10th floor
+- Requirement
+  2: [Decorator Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/43ccf262c361e32c4cdf21cb17958694e390c112/src/main/java/Main.java#L117-L117):
+  All enemies should get harder for each floor you travel to
 
-Requirement 1
-- [Iterator Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/3fa7e15c91d2424fc08140913901f447cb22d4a3/src/main/java/Main.java#L161-L1610):
-Shop should sell 3 random objects. Requirement 2
-- [Iterator Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/3fa7e15c91d2424fc08140913901f447cb22d4a3/src/main/java/Main.java#L175-L175):
-After battle, have chance to get items from treasure chest. Requirement 3
-- [Iterator Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/3fa7e15c91d2424fc08140913901f447cb22d4a3/src/main/java/Main.java#L148-L148):
-If health is below 15%, go to top floor.
+- Requirement
+  1: [Iterator Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/43ccf262c361e32c4cdf21cb17958694e390c112/src/main/java/Main.java#L163-L163):
+  Shop should sell 3 random objects.
+- Requirement
+  2: [Iterator Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/43ccf262c361e32c4cdf21cb17958694e390c112/src/main/java/Main.java#L177-L177):
+  After battle, have chance to get items from treasure chest.
+- Requirement
+  3: [Iterator Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/43ccf262c361e32c4cdf21cb17958694e390c112/src/main/java/Main.java#L150-L150):
+  If health is below 15%, go to top floor.
