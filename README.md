@@ -5,7 +5,7 @@ and health. Finally, use the Decorator pattern to add additional funcationality 
 
 ## Spotbugs HTML Screenshot
 
-> No spotbugs errors
+![image](https://user-images.githubusercontent.com/52048026/165600878-0394cbdf-748f-42d1-914a-70c7be3c56af.png)
 
 ## Checkstyle Report Screenshot
 
