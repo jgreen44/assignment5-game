@@ -70,3 +70,5 @@ and health. Finally, use the Decorator pattern to add additional funcationality 
 - Requirement
   3: [Iterator Pattern](https://github.com/jgreen44/ser316-assignment5-game/blob/43ccf262c361e32c4cdf21cb17958694e390c112/src/main/java/Main.java#L150-L150):
   If health is below 15%, go to top floor.
+
+gradle build demo
