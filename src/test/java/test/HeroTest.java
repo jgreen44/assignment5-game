@@ -2,7 +2,6 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.github.javafaker.Faker;
 import hero.Armor;
 import hero.CharacterType;
 import hero.HairColor;
@@ -14,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 class HeroTest {
 
-  Faker faker = new Faker();
   Hero hero = new Hero.Builder()
       .characterType(CharacterType.SORCERER)// random character type
       .name("Jason")

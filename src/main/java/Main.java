@@ -114,6 +114,8 @@ public class Main {
       var mediumEnemyObj = new MediumEnemies(smallEnemyObj);
       var bossEnemyObj = new BossEnemies(mediumEnemyObj);
 
+      // REQUIREMENT #2 - Decorator Pattern
+      // All enemies should get harder for each floor you travel to
       System.out.println("Walking into Room " + count + ", you encounter a " + enemyType);
       if (smallEnemy) {
         System.out.println("The small enemy attacks...");
