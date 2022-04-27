@@ -1,6 +1,8 @@
 package hero;
 
-
+/**
+ * The enum Hair color.
+ */
 public enum HairColor {
 
   GREEN, YELLOW, RED, BLUE, ORANGE, BLACK, PURPLE, BROWN, WHITE, BLOND;

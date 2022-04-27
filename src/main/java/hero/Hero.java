@@ -1,6 +1,5 @@
 package hero;
 
-
 /**
  * The type Hero.
  */
@@ -11,15 +10,15 @@ public final class Hero {
   private final HairType hairType;
   private final HairColor hairColor;
   private final Armor armor;
-  private final double heightFeet;
-  private final double heightInches;
-  private final int mana;
-  private final int strength;
-  private final int agility;
-  private final int intelligence;
-  private final int luck;
-  private final int level;
-  private final int experience;
+  private double heightFeet;
+  private double heightInches;
+  private int mana;
+  private int strength;
+  private int agility;
+  private int intelligence;
+  private int luck;
+  private int level;
+  private int experience;
   private Weapon weapon2nd;
   private Weapon weapon3rd;
   private Weapon weaponPrimary;
@@ -47,7 +46,7 @@ public final class Hero {
     this.experience = builder.experience;
   }
 
-  public CharacterType getProfession() {
+  public CharacterType getCharacterType() {
     return characterType;
   }
 
@@ -55,48 +54,56 @@ public final class Hero {
     return name;
   }
 
-  public HairType getHairType() {
-    return hairType;
-  }
-
   public HairColor getHairColor() {
     return hairColor;
   }
 
-  public Armor getArmor() {
-    return armor;
-  }
-
-  public double getHeightFeet() {
-    return heightFeet;
-  }
-
-  public double getHeightInches() {
-    return heightInches;
+  public HairType getHairType() {
+    return hairType;
   }
 
   public Weapon getWeaponPrimary() {
     return weaponPrimary;
   }
 
-  public Weapon setWeaponPrimary(Weapon weaponPrimary) {
-    return this.weaponPrimary = weaponPrimary;
+  public void setWeaponPrimary(Weapon weaponPrimary) {
+    this.weaponPrimary = weaponPrimary;
   }
 
   public Weapon getWeapon2nd() {
     return weapon2nd;
   }
 
-  public Weapon setWeapon2nd(Weapon weapon2nd) {
-    return this.weapon2nd = weapon2nd;
+  public void setWeapon2nd(Weapon weapon2nd) {
+    this.weapon2nd = weapon2nd;
   }
 
   public Weapon getWeapon3rd() {
     return weapon3rd;
   }
 
-  public Weapon setWeapon3rd(Weapon weapon3rd) {
-    return this.weapon3rd = weapon3rd;
+  public void setWeapon3rd(Weapon weapon3rd) {
+    this.weapon3rd = weapon3rd;
+  }
+
+  public double getHeightFeet() {
+    return heightFeet;
+  }
+
+  public void setHeightFeet(double heightFeet) {
+    this.heightFeet = heightFeet;
+  }
+
+  public double getHeightInches() {
+    return heightInches;
+  }
+
+  public void setHeightInches(double heightInches) {
+    this.heightInches = heightInches;
+  }
+
+  public Armor getArmor() {
+    return armor;
   }
 
   public int getHealth() {
@@ -111,55 +118,79 @@ public final class Hero {
     return mana;
   }
 
+  public void setMana(int mana) {
+    this.mana = mana;
+  }
+
   public int getStrength() {
     return strength;
+  }
+
+  public void setStrength(int strength) {
+    this.strength = strength;
   }
 
   public int getAgility() {
     return agility;
   }
 
+  public void setAgility(int agility) {
+    this.agility = agility;
+  }
+
   public int getIntelligence() {
     return intelligence;
+  }
+
+  public void setIntelligence(int intelligence) {
+    this.intelligence = intelligence;
   }
 
   public int getLuck() {
     return luck;
   }
 
+  public void setLuck(int luck) {
+    this.luck = luck;
+  }
+
   public int getLevel() {
     return level;
+  }
+
+  public void setLevel(int level) {
+    this.level = level;
   }
 
   public int getExperience() {
     return experience;
   }
 
+  public void setExperience(int experience) {
+    this.experience = experience;
+  }
 
   @Override
   public String toString() {
-
-    var stringBuilder = new StringBuilder();
-    stringBuilder
-        .append("Your random hero is a: ").append(characterType).append("\n")
-        .append("Name: ").append(name).append("\n")
-        .append("Height: ").append(heightFeet).append(" feet, ")
-        .append(heightInches).append(" inches\n")
-        .append("Hair Type: ").append(hairType).append("\n")
-        .append("Hair Color: ").append(hairColor).append("\n")
-        .append("Armor: ").append(armor).append("\n")
-        .append("Weapon 1: ").append(weaponPrimary).append("\n")
-        .append("Weapon 2: ").append(weapon2nd).append("\n")
-        .append("Weapon 3: ").append(weapon3rd).append("\n")
-        .append("Health: ").append(health).append("\n")
-        .append("Mana: ").append(mana).append("\n")
-        .append("Strength: ").append(strength).append("\n")
-        .append("Agility: ").append(agility).append("\n")
-        .append("Intelligence: ").append(intelligence).append("\n")
-        .append("Luck: ").append(luck).append("\n")
-        .append("Level: ").append(level).append("\n")
-        .append("Experience: ").append(experience).append("\n");
-    return stringBuilder.toString();
+    return "Your random hero is a: "
+        + characterType + "\n"
+        + "Name: " + name + "\n"
+        + "Height: " + heightFeet + " feet, "
+        + heightInches + " inches\n"
+        + "Hair Type: " + hairType + "\n"
+        + "Hair Color: " + hairColor + "\n"
+        + "Armor: " + armor + "\n"
+        + "Weapon 1: " + weaponPrimary + "\n"
+        + "Weapon 2: " + weapon2nd + "\n"
+        + "Weapon 3: " + weapon3rd + "\n"
+        + "Health: " + health + "\n"
+        + "Mana: " + mana + "\n"
+        + "Strength: " + strength + "\n"
+        + "Agility: " + agility + "\n"
+        + "Intelligence: " + intelligence + "\n"
+        + "Luck: " + luck + "\n"
+        + "Level: " + level + "\n"
+        + "Experience: " + experience + "\n";
   }
 
   /**

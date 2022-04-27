@@ -10,7 +10,6 @@ public class TreasureChestItemIterator implements Iterator<Item> {
   private final TreasureItemTypes type;
   private int index;
 
-
   /**
    * Instantiates a new Treasure chest item iterator.
    *
@@ -51,13 +50,5 @@ public class TreasureChestItemIterator implements Iterator<Item> {
       }
     }
     return tempIndex;
-  }
-
-  @Override
-  public void remove() {
-    if (index != -1) {
-      treasureForHero.getItems().remove(index);
-      index = -1;
-    }
   }
 }

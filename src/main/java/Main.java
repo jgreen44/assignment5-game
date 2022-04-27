@@ -7,7 +7,6 @@ import static treasure.TreasureItemTypes.SCROLLS;
 import static treasure.TreasureItemTypes.WANDS;
 import static treasure.TreasureItemTypes.WEAPONS;
 
-import Souts.Souts;
 import com.github.javafaker.Faker;
 import hero.Armor;
 import hero.CharacterType;
@@ -15,37 +14,42 @@ import hero.HairColor;
 import hero.HairType;
 import hero.Hero;
 import hero.Weapon;
+import random.RandomGenerators;
+import treasure.Item;
 import treasure.TreasureForHero;
 import treasure.TreasureItemTypes;
 import villian.BossEnemies;
 import villian.MediumEnemies;
 import villian.SmallEnemies;
 
+/**
+ * The type Main.
+ */
 public class Main {
 
   private static final TreasureForHero TREASURE_CHEST = new TreasureForHero();
 
   private static void treasureItemsIterator(TreasureItemTypes treasureItemTypes) {
-    System.out.println("-------------------------");
-    System.out.println("Treasure Items " + treasureItemTypes + ": ");
+    treasureItemsOutput(treasureItemTypes);
     var itemIterator = TREASURE_CHEST.iterator(treasureItemTypes);
     while (itemIterator.hasNext()) {
       System.out.println(itemIterator.next().toString());
     }
-//    itemIterator.remove();
-
-    while (itemIterator.hasNext()) {
-      System.out.println(itemIterator.next().toString());
-    }
-
   }
 
+
+  /**
+   * The entry point of application.
+   *
+   * @param args the input arguments
+   */
   public static void main(String[] args) {
 
     int count = 1;
     boolean smallEnemy = false;
     boolean mediumEnemy = false;
     boolean encounteredBattle = false;
+    boolean gameWon = false;
 
     Faker faker = new Faker();
 
@@ -79,15 +83,11 @@ public class Main {
         // Create a random character with skills
         .experience(faker.number().numberBetween(1, 100)) // experience
         .build();
-    System.out.println(hero.toString());
 
-    System.out.println("----------------------------------------------------");
-    System.out.println("----------------LETS BEGIN THE GAME!----------------");
-    System.out.println("----------------------------------------------------");
-    System.out.println("\n");
+    currentStats(hero);
+    beginGameOutput();
 
     // Set initial health
-
     double initialHealth = hero.getHealth();
     double currentHealth;
 
@@ -128,7 +128,7 @@ public class Main {
 
       System.out.println("Do you take a hit?");
 
-      Souts souts = new Souts();
+      RandomGenerators souts = new RandomGenerators();
 
       // logic if you take a hit to health or not.
       if (souts.getRandomTrueFalse()) {
@@ -145,6 +145,11 @@ public class Main {
         System.out.println(HealthBar.getHealthBar((int) initialHealth, (int) currentHealth));
         System.out.println(HealthBar.getHealthBarPercentage(initialHealth, currentHealth));
 
+        // REQUIREMENT #3 - Iterator Pattern
+        // If health is below 15%, go to top floor.
+        if (HealthBar.getHealthBarPercentageDouble(initialHealth, currentHealth) < 15) {
+          count = 0;
+        }
       } else {
         System.out.println("You got away! Consider yourself lucky! Go buy a lottery ticket.");
       }
@@ -165,31 +170,95 @@ public class Main {
         treasureItemsIterator(WANDS);
         treasureItemsIterator(WEAPONS);
 
-        var randomWeapon = Weapon.getRandomWeapon();
-        var randomTreasure = TreasureForHero.getRandomItem2();
-
+        Item randomTreasure = TreasureForHero.getRandomItem();
 
         // REQUIREMENT #2 - Iterator Pattern
-        // After battle, have chance to buy items from treasure chest.
-        System.out.println("You picked " + randomWeapon);
+        // After battle, have chance to get items from treasure chest.
+        System.out.println(
+            "You open the treasure chest and find several " + randomTreasure.getType() + "!");
+        System.out.println("You equip yourself with " + randomTreasure + "!");
+        var extraHealth = faker.number().numberBetween(1, 1000);
+        var extraStrength = faker.number().numberBetween(1, 50);
+        System.out.println("This gives you a +" + extraHealth + " to your Health!");
+        System.out.println("This also gives you a +" + extraStrength + " to your Strength!");
+
+        hero.setHealth(hero.getHealth() + extraHealth);
+        hero.setStrength(hero.getStrength() + extraStrength);
+
+        Weapon randomWeapon = Weapon.getRandomWeapon();
+        System.out.println(
+            "Because this is make believe and I'm horrible at story lines, you get a "
+                + randomWeapon + ", too!");
+        System.out.println("You equip yourself with " + randomWeapon + "!");
         hero.setWeaponPrimary(randomWeapon);
 
 
-        // REQUIREMENT #3 - Iterator Pattern
-        // Gain experience after battle to increase skill or magic power upgrade.
-
+        currentStats(hero);
         count++;
+
+        if (count == 30) {
+          wonGameOutput();
+          currentStats(hero);
+          gameWon = true;
+          break;
+        }
       }
-
-
     }
 
-
-    System.out.println("You're dead. Game over. Go study SER 316.");
+    if (!gameWon) {
+      System.out.println("You're dead. Game over. Go study SER 316.");
+    }
 
 
   }
 
+  private static void beginGameOutput() {
+    System.out.println("------------------------------------------------------");
+    System.out.println("---------------╔══════════════════════╗---------------");
+    System.out.println("---------------║                      ║---------------");
+    System.out.println("---------------║ LETS BEGIN THE GAME! ║---------------");
+    System.out.println("---------------║                      ║---------------");
+    System.out.println("---------------╚══════════════════════╝---------------");
+    System.out.println("------------------------------------------------------");
+  }
+
+  private static void wonGameOutput() {
+    System.out.println("----------------------------------------------------");
+    System.out.println("-----------╔════════════════════════════╗-----------");
+    System.out.println("-----------║                            ║-----------");
+    System.out.println("-----------║ YOU HAVE REACHED FLOOR 30! ║-----------");
+    System.out.println("-----------║                            ║-----------");
+    System.out.println("-----------╚════════════════════════════╝-----------");
+    System.out.println("-----╔════════════════════════════════════════╗-----");
+    System.out.println("-----║                                        ║-----");
+    System.out.println("-----║ AND WON THIS GAME THAT MAKES NO SENSE! ║-----");
+    System.out.println("-----║                                        ║-----");
+    System.out.println("-----╚════════════════════════════════════════╝-----");
+    System.out.println("----------------------------------------------------");
+  }
+
+  private static void currentStats(Hero hero) {
+    System.out.println("-----------------------------------------------------");
+    System.out.println("---------------╔═════════════════════╗---------------");
+    System.out.println("---------------║                     ║---------------");
+    System.out.println("---------------║ YOUR CURRENT STATS! ║---------------");
+    System.out.println("---------------║                     ║---------------");
+    System.out.println("---------------╚═════════════════════╝---------------");
+    System.out.println("-----------------------------------------------------");
+    System.out.println(hero.toString());
+  }
+
+  private static void treasureItemsOutput(TreasureItemTypes treasureItemTypes) {
+    System.out.println();
+    System.out.println("------------------------------------------------");
+    System.out.println("---------------╔════════════════╗---------------");
+    System.out.println("---------------║                ║---------------");
+    System.out.println("---------------║ Treasure Items:║---------------");
+    System.out.println("---------------║                ║---------------");
+    System.out.println("---------------╚════════════════╝---------------");
+    System.out.println("------------------------------------------------");
+    System.out.println(": " + treasureItemTypes);
+  }
 
   private static class HealthBar {
     private static final String HEALTH_BAR = "Health: ";
@@ -197,6 +266,10 @@ public class Main {
 
     public static String getHealthBarPercentage(double initialHealth, double currentHealth) {
       return HEALTH_PERCENTAGE + String.format("%.2f", ((currentHealth) / initialHealth) * 100);
+    }
+
+    public static double getHealthBarPercentageDouble(double initialHealth, double currentHealth) {
+      return (currentHealth / initialHealth) * 100;
     }
 
     public static String getHealthBar(int initialHealth, int currentHealth) {

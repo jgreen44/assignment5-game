@@ -1,46 +1,45 @@
 package hero;
 
+import java.util.Random;
+
 /**
  * The enum Armor.
  */
 public enum Armor {
 
-  BRANDED_ARMOR("branded armor"),
-  BREASTPLATE("breastplate"),
-  BUCKLER("buckler"),
-  CHAIN_SHIRT("chain shirt"),
-  FULL_PLATE("full plate"),
-  HALF_PLATE("half plate"),
-  HEAVY_STEEL_SHIELD("heavy steel shield"),
-  LEATHER_ARMOR("leather armor"),
-  LIGHT_STEEL_SHIELD("light steel shield"),
-  PADDED_ARMOR("padded armor"),
-  PADDED_SHIELD("padded shield"),
-  PLATE_MAIL("plate mail"),
-  SHIELD("shield"),
-  STUDDED_ARMOR("studded armor"),
-  STUDDED_SHIELD("studded shield"),
-  WOODEN_SHIELD("wooden shield"),
-  CHAIN_MAIL("chain mail");
+  BRANDED_ARMOR("Branded Armor"),
+  BREASTPLATE("Breastplate"),
+  BUCKLER("Buckler"),
+  CHAIN_SHIRT("Chain Shirt"),
+  FULL_PLATE("Full Plate"),
+  HALF_PLATE("Half Plate"),
+  HEAVY_STEEL_SHIELD("Heavy Steel Shield"),
+  LEATHER_ARMOR("Leather Armor"),
+  LIGHT_STEEL_SHIELD("light Steel Shield"),
+  PADDED_ARMOR("Padded Armor"),
+  PADDED_SHIELD("Padded Shield"),
+  PLATE_MAIL("Plate Mail"),
+  SHIELD("Shield"),
+  STUDDED_ARMOR("Studded Armor"),
+  STUDDED_SHIELD("Studded Shield"),
+  WOODEN_SHIELD("Wooden Shield"),
+  CHAIN_MAIL("Chain Mail");
 
 
-  private final String title;
+  private static final Random random = new Random();
+  private final String name;
 
-  Armor(String title) {
-    this.title = title;
+  Armor(String type) {
+    this.name = type;
   }
 
-  /**
-   * Gets random armor.
-   *
-   * @return the random armor
-   */
   public static Armor getRandomArmor() {
-    return values()[(int) (Math.random() * values().length)];
+    final int randomIndex = random.nextInt(values().length);
+    return values()[randomIndex];
   }
 
   @Override
   public String toString() {
-    return name().substring(0, 1).toUpperCase() + name().substring(1).toLowerCase();
+    return name;
   }
 }

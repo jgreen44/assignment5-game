@@ -1,5 +1,6 @@
 package treasure;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,12 +11,16 @@ import java.util.Random;
  */
 public class TreasureForHero {
 
+
+  private static final Random random = new Random();
   private static List<Item> items = null;
 
   /**
    * Instantiates a new Treasure for hero.
    */
+  @SuppressFBWarnings("ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD")
   public TreasureForHero() {
+
     items = List.of(
         new Item(TreasureItemTypes.COINS, "Blue coin"),
         new Item(TreasureItemTypes.COINS, "Red coin"),
@@ -60,11 +65,10 @@ public class TreasureForHero {
     );
   }
 
-  public static Item getRandomItem2() {
-    int index = new Random().nextInt(items.size());
-    items.remove(index);
+  @SuppressFBWarnings("DMI_RANDOM_USED_ONLY_ONCE")
+  public static Item getRandomItem() {
+    int index = random.nextInt(items.size());
     return items.get(index);
-
   }
 
   public Iterator<Item> iterator(TreasureItemTypes treasureItemTypes) {
@@ -74,10 +78,4 @@ public class TreasureForHero {
   public List<Item> getItems() {
     return new ArrayList<>(items);
   }
-
-  public void removeItem(Item item) {
-    items.remove(item);
-  }
-
-
 }

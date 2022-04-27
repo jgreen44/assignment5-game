@@ -71,8 +71,7 @@ public enum Weapon {
   }
 
   public static Weapon getRandomWeapon() {
-    final int randomIndex =
-        random.nextInt(values().length); // return a value of 0..values().legnth - 1);
+    final int randomIndex = random.nextInt(values().length);
     return values()[randomIndex];
   }
 
